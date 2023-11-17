@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/commons::head}"></head>
+<body>
+<header th:replace="~{fragments/commons::navbar}"></header>
+    <div class="container">
+    <div class="card-columns">
+        <div th:each="c:${cars}" class="card">
+          <img class="card-img-top" src="image/rent1.jpg" alt="Card image cap">
+          <div  class="card-body">
+            <h5 class="card-title" th:text="*{c.model}">Kia Picanto or similar small car</h5>
+            <ul class="space" id="cars">
+                <li><i class="fa-solid fa-chair"></i><span th:text="|*{c.seats} seats|">4 seats</span></li>
+                <li><i class="fa-solid fa-suitcase-rolling"></i><span th:text="|*{c.bag} bags|">1 bags</span></li>
+                <li><i class="fa-solid fa-door-closed"></i><span th:text="|*{c.doors} doors|">5 doors</span></li>
+                <li><i class="fa-solid fa-gas-pump"></i><span th:text="|*{c.fuelType}|">Petrol</span></li>
+                <li><i class="fa-solid fa-hand-holding-dollar"></i><span th:text="|*{c.price} price per day|">Price</span></li>
+                <li>Pick up full,return full</li>
+                <li><span th:text="*{c.pickUpAndDropLocation}">location</span> In terminal</li>
+            </ul>
+<!--              <a th:href="@{/rent/{id}(id=*{c.id})}"></a>-->
+<!--&lt;!&ndash;              <form action="/rent/add" method="post">&ndash;&gt;-->
+<!--&lt;!&ndash;                  <button type="submit" class="btn btn-success mx-3"&ndash;&gt;-->
+<!--&lt;!&ndash;                          th:value="${c.getId()}">&ndash;&gt;-->
+<!--&lt;!&ndash;                      <i class="fas fa-cart-plus mr-2 fa-lg"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;                      ADD TO CART&ndash;&gt;-->
+<!--&lt;!&ndash;                  </button>&ndash;&gt;-->
+<!--&lt;!&ndash;              </form>&ndash;&gt;-->
+<!--              <form action="@{/rent/{id}(id=*{c.id})}"  method="post">-->
+<!--              <input type="number" class="form-check" placeholder="Days">-->
+            <a type="submit" class="btn btn-primary" th:href="@{/rent/{id}(id=*{c.id})}" >Book a reservation</a>
+<!--              </form>-->
+              <br>
+                  <th:block sec:authorize="hasRole('ADMIN')">
+                      <br>
+                      <a type="submit" class="btn btn-light" th:href="@{/updateCar/{id}(id = *{c.id})}">Update</a>
+                      <br>
+                      <br>
+                  <form th:action="@{/deleteCar/{id}(id=*{c.id})}" method="post">
+                      <th><button class="btn btn-danger">Delete</button></th>
+                  </form>
+              </th:block>
+          </div>
+        </div>
+    </div>
+</div>
+  <footer th:replace="~{fragments/commons::footer}"></footer>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</body>
+</html>

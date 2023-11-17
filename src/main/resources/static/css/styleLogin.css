@@ -1,0 +1,51 @@
+#login{
+    background-image: url(/image/plane.jpg);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      width: 100vw;
+      height: 100vh;
+  
+  
+  }
+  #loginForm{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 12px;
+    background-color: transparent;
+    position:-webkit-sticky;
+   
+  }
+  @media (max-width: 600px) {
+    #loginForm{
+      position:-ms-page;
+    }
+ 
+  }
+  #register{
+    background-image: url(/image/plane.jpg);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      width: 100vw;
+      /*height: 100vh;*/
+
+
+  }
+  #registerForm{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 12px;
+    background-color: transparent;
+    position:-webkit-sticky;
+   
+  }
+  @media (max-width: 600px) {
+    #registerForm{
+      position:-ms-page;
+    }
+   
+ 
+}

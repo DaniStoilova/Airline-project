@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Hello</title>
+</head>
+<body>
+
+Hello!
+<p>
+  Find destination and get your attractive offers!
+</p>
+
+<th:block>
+  <div class="container-fluid">
+    <div class="table-responsive text-nowrap">
+      <div>
+        <h2>Tickets</h2>
+      </div>
+      <table  th:each="flight: ${flights}"
+              th:object="${flight}" class="table table-striped">
+        <thead>
+        <tr>
+          <th>#</th>
+          <th class="th-sm">No</th>
+          <th class="th-sm">Depart</th>
+          <th class="th-sm"><i class="fa-solid fa-plane"></i></th>
+          <th class="th-sm">Arrival</th>
+          <th class="th-sm"><i class="fa-regular fa-calendar-days"></i>Date time</th>
+          <th class="th-sm">Economy from</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <th scope="row" th:text="*{id}">1</th>
+          <td th:text="*{flightNumber}">12345</td>
+          <td th:text="*{origin}">Vienna</td>
+          <th><i class="fa-solid fa-plane"></i></th>
+          <th th:text="*{destination}">London</th>
+          <th th:text="*{depTime}">15:45</th>
+          <th th:text="*{price}">20 $</th>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</th:block>
+
+<p>
+  Best,
+  Airline!
+</p>
+
+</body>
+</html>

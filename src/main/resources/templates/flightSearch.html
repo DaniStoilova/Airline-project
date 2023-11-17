@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/commons::head}"></head>
+<body>
+<header th:replace="~{fragments/commons::navbar}"></header>
+<div class="container">
+    <h2 class="text-center text-white">Search for offers</h2>
+    <form
+            th:method="post"
+            th:action="@{/search}"
+            class="form-inline"
+            style="justify-content: center; margin-top: 50px;"
+    >
+        <div style="position: relative">
+          <div th:each="f:${flight}" class="description">
+            <select  th:errorclass="'is-invalid alert-danger'" id="from" class="custom-select"
+                    aria-describedby="fromHelpInline">
+                <option  th:field="*{f.origin}" value="" selected>Departing From</option>
+                 <option th:each="p : ${T(com.example.airline.model.enums.CountryEnum).values()}" th:text="${p}" th:value="${p}"></option>
+            </select>
+            <select th:field="*{f.destination}" th:errorclass="'is-invalid alert-danger'" id="to" class="custom-select"
+                    aria-describedby="toHelpInline">
+                <option value="" selected>Arriving at</option>
+                <option th:each="p : ${T(com.example.airline.model.enums.CountryEnum).values()}" th:text="${p}" th:value="${p}"></option>
+            </select>
+
+<!--            <input th:field="*{depTime}" th:errorclass="'is-invalid alert-danger'" name="time" type="datetime-local" class="form-control" placeholder="Date">-->
+<!--             <small th:if="${#fields.hasErrors('depTime')}" th:errors="*{depTime}"></small>-->
+        </div>
+            <small
+                    id="searchOfferHelpInline"
+                    class="bg-danger text-light rounded invalid-feedback"
+                    style="width: 97%; position: absolute; padding: 3px 15px; text-align: center;"
+            >
+                Try writing something this time.
+            </small>
+        </div>
+        <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
+    </form>
+</div>
+<div class="titlepage">
+    <h2 th:if="${flights != null && flights.size > 0}">Found products</h2>
+    <h2 th:if="${flights != null && flights.size == 0}">No products found</h2>
+</div>
+
+<div class="table-responsive text-nowrap">
+  <div>
+      <h2>Tickets</h2>
+  </div>
+      <table th:each="f: ${flights}" class="table table-striped">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th class="th-sm">No</th>
+            <th class="th-sm">Depart</th>
+            <th class="th-sm"><i class="fa-solid fa-plane"></i></th>
+            <th class="th-sm">Arrival</th>
+            <th class="th-sm"><i class="fa-regular fa-calendar-days"></i>Date time</th>
+            <th class="th-sm">Economy from</th>
+            <th class="th-sm">Business from</th>
+            <th class="th-sm">Book now</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+                  <th scope="row" th:text="*{f.id}">1</th>
+                  <td th:text="*{f.flightNumber}">12345</td>
+                  <td th:text="*{f.origin}">Vienna</td>
+                  <th><i class="fa-solid fa-plane"></i></th>
+                  <th th:text="*{f.destination}">London</th>
+                  <th th:text="*{f.depTime}">15:45</th>
+                  <th th:text="*{f.price}">20 $</th>
+                  <th><button type="submit" class="btn btn-primary">Book</button></th>
+          </tr>
+       </tbody>
+      </table>
+      </div> 
+
+
+  <footer th:replace="~{fragments/commons::footer}"></footer>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</body>
+</html>

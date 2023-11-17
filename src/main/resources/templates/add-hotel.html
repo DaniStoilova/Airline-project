@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/commons::head}"></head>
+<body>
+
+<header th:replace="~{fragments/commons::navbar}"></header>
+
+<div class="container-fluid" >
+    <div class="jumbotron" id="hotel">
+        <h1 class="display-4">For your most comfortable vacation</h1>
+        <p class="lead">Discover lodges, holiday homes and more.</p>
+        <hr class="my-4">
+        <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+    </div>
+    <form  th:object="${addHotelReservation}"
+           th:action="@{/hotel}"
+           th:method="post" >
+        <h3><i class="fa-solid fa-hotel"></i>Reservation hotel</h3>
+        <div>
+            <div class="addHotel">
+                <select th:field="*{location}" th:errorclass="'is-invalid alert-danger'">
+                    <option value="" selected>Location</option>
+                    <option th:each="p : ${T(com.example.airline.model.enums.CountryEnum).values()}" th:text="${p}" th:value="${p}">London</option>
+                </select>
+                <select th:field="*{propertyType}" th:errorclass="'is-invalid alert-danger'">
+                    <option value="" selected>Property Type</option>
+                    <option th:each="p : ${T(com.example.airline.model.enums.PropertyType).values()}" th:text="${p}" th:value="${p}">One</option>
+                </select>
+                <div>
+                    <input type="number" th:field="*{price}" th:errorclass="'is-invalid alert-danger'" placeholder="Price">
+                    <small th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></small>
+                </div>
+                <div>
+                    <input type="number" th:field="*{room}" th:errorclass="'is-invalid alert-danger'" placeholder="Room" >
+                    <small th:if="${#fields.hasErrors('room')}" th:errors="*{room}"></small>
+                </div>
+                <button type="submit" class="btn btn-primary">Add</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<footer th:replace="~{fragments/commons::footer}"></footer>
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  </body>
+  </html>

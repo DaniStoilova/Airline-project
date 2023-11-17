@@ -1,0 +1,351 @@
+.about{ 
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    align-items: center;
+    width: 60%;
+    height: 60%;
+    gap: 10px;
+    /* position: -ms-page; */
+     position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    
+  }
+  .information{
+    text-align: center;
+     padding-bottom: 15%;
+     
+  } 
+  .about img{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+  @media (max-width: 700px) {
+    .about{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 10px;
+      position: -ms-page;
+    }
+    .information{
+      text-align: center;
+       padding-bottom: 50%;
+       
+    }
+  
+  }
+  @media (max-width: 700px) {
+    .information{
+      text-align: center;
+       padding-bottom: 50%;
+       
+    }
+  }
+.description, select{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 20px 20px;
+    padding: 3px;
+}
+.description{
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: stretch;
+    margin-left: 0;
+    gap: 20px;
+
+}
+.description, option{
+    width: 70%;
+}
+.description, input{
+  width: 70%;
+}
+#reservation{
+    background-image: url(/image/Airplane__Autumn.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 100vw;
+    /* height: 100vh; */
+   
+}
+#reservationForm{
+    background-color: wheat;
+    border-radius: 14px;
+    border:grey;
+    border-radius: 14px solid black;
+    padding: 30px 30px;
+    /* width: 60%;
+    height: 60%; */
+    position: -webkit-sticky;
+   
+  }
+  @media (max-width: 500px) {
+    #reservationForm{
+        /* width: 80%;
+        height: 80%; */
+        position: -ms-page; 
+    }
+    .description{
+        display: flex;
+        flex-direction:column;
+        justify-content: center;
+        padding: 10px;
+       
+    }
+  }
+  .car{
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: stretch;
+    margin-left: 0;
+    gap: 20px;
+
+  }
+  .car{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 2px;
+  padding: 3px;
+  }
+  .car div input{
+    width: 100%;
+  }
+
+.car, option{
+  width: 30%;
+}
+.car input{
+  width: auto;
+}
+#rent{
+  background-image: url(/image/rent1.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 100vw;
+  /*height: 100vh;*/
+ 
+}
+
+#rent-car{
+  padding: 30px 30px; 
+
+} 
+.car button{
+  background-color: lightblue;
+  
+}
+@media (max-width: 780px) {
+  .car, option{
+    width: 80%;
+  }
+  .car input{
+    width: 40px;
+  }
+}
+
+.baggage{
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  padding: 20px 20px;
+
+}
+
+.icons i{
+ font-size: 60px;
+ text-align: center; 
+      width: 100%; 
+
+}
+.icons p{
+  align-items: center;
+  
+ 
+ }
+ #baggageInfo{
+  padding: 20px 20px;
+ }
+
+
+ @media (max-width: 600px) {
+  .baggage{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  
+  }
+  .icons i{ 
+      text-align: center; 
+      width: 100%; 
+  } 
+
+}
+#hotel{
+  background-image: url(/image/house.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
+
+}
+#hotel,h1 p{
+  color:white;
+}
+#hotel a{
+  color:white;
+ 
+}
+.addHotel, input option{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 2px;
+  padding: 20px 20px;
+}
+
+.addHotel{
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: stretch;
+  margin-left: 0;
+  gap: 10px;
+}
+.addHotel option{
+  width: auto;
+}
+.addHotel, select{
+  width:90%;
+}
+.addHotel button{
+  width:60%; 
+}
+@media (max-width: 700px) {
+  .addHotel{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  
+  }
+ 
+  }
+.contact{
+    background-image: url(/image/contact-us.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 100vw;
+
+
+}
+#contact{
+    width: 50%;
+    position: -webkit-sticky;
+    padding: 30px 30px;
+}
+#contact h2{
+    text-align: center;
+}
+@media (max-width: 600px) {
+    #contact{
+        width: 100%;
+        position: -webkit-sticky;
+        padding: 30px 30px;
+    }
+
+}
+#pass{
+    background-color: lightblue;
+    border-radius: 40px solid black;
+}
+
+#ticket{
+    /* background-color: lightgray; */
+    background-image: url(/image/eu-blue-card.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 100vw;
+    height: 50vh;
+
+}
+#ticket tbody th{
+    /* font-weight: bold; */
+    padding: 30px 30px;
+    font-size: 20px;
+
+}
+#ticket thead th{
+    /* font-weight: bold; */
+    padding: 30px 30px;
+    font-size: 12px;
+
+}
+.boardingPass{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    /* background-color: lightblue; */
+}
+#barcode img{
+    width: 50%;
+    height: 50%;
+}
+#cars{
+    list-style-type: none;
+}
+#successfully{
+    background-image: url(/image/trip.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+
+    text-align:  center;
+    padding-top: 50px;
+    color: aliceblue;
+
+}
+.card-text{
+    font-size: 13px;
+
+}
+.addHotel input{
+    width: auto;
+
+}
+#error{
+    background-image: url(/image/a1.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+
+    text-align:  center;
+    padding-top: 30px;
+    color: aliceblue;
+
+}
+#error button{
+    border: white;
+    margin: 30px;
+    padding: 10px 10px;
+    border-radius: 12px solid white;
+
+}
+
+
+ 
