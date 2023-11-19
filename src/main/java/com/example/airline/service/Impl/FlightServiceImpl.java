@@ -126,7 +126,10 @@ public class FlightServiceImpl implements FlightService {
 
     }
 
-
+    @Override
+    public Optional<AllFlightDTO> findFlightById(Long id) {
+        return flightRepository.findById(id).map(fl-> modelMapper.map(fl, AllFlightDTO.class));
+    }
 
 
 }

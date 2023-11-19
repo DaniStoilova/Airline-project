@@ -33,4 +33,5 @@ public interface FlightService {
     public List<Flight>  getAllFlightsWithLowPrice(BigDecimal price);
 
 
+    Optional<AllFlightDTO> findFlightById(Long id);
 }

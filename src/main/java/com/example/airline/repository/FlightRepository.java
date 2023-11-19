@@ -21,4 +21,5 @@ public interface FlightRepository extends JpaRepository<Flight,Long> {
 
     List<Flight> findAllByPriceIsLessThan(BigDecimal price);
 
+
 }
