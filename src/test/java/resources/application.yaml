@@ -1,0 +1,16 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+
+    defer-datasource-initialization: true
+  sql:
+    init:
+      mode: never
+
+
+mail:
+  host: localhost
+  port: 3333
+  username: "test@example.com"
+  password: ""

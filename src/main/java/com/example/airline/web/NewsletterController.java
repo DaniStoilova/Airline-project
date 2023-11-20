@@ -34,7 +34,7 @@ public class NewsletterController {
             redirectAttributes.addFlashAttribute("newsletterDTO", newsletterDTO);
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.newsletterDTO", bindingResult);
 
-            return "redirect:/";
+            return "news";
         }
 
 

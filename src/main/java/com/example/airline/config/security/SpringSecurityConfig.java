@@ -4,6 +4,7 @@ import com.example.airline.repository.UserRepository;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -14,6 +15,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 
 @Configuration
+@EnableMethodSecurity
 public class SpringSecurityConfig  {
 
     private final UserRepository userRepository;
@@ -33,8 +35,8 @@ public class SpringSecurityConfig  {
                      .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
                      .requestMatchers( "/*.css").permitAll()
                      .requestMatchers( "/image/**","/static/**", "/css/**").permitAll()
-                     .requestMatchers("/","/about" ,"/users/login-error","/contact","/all","rentAll","/allReservation","/info","/cars","addNews").permitAll()
-                     .requestMatchers("/users/login", "/users/register").anonymous()
+                     .requestMatchers("/","/about" ,"/users/login-error","/contact","/all","rentAll","/allReservation","/info","addNews").permitAll()
+                     .requestMatchers("/users/login", "/users/register").permitAll()
                      .requestMatchers("/add","/car","/hotel").hasRole(RoleEnum.ADMIN.name())
                      .anyRequest().authenticated())
                  .formLogin(
