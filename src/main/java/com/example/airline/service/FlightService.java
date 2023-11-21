@@ -18,7 +18,7 @@ public interface FlightService {
 
     Optional<UpdateFlightDto> getUpdateFlight(Long id);
 
-    void updateFlight(Flight update, UpdateFlightDto updateFlightDto);
+    Flight updateFlight(Flight update, UpdateFlightDto updateFlightDto);
 
     Optional<Flight> findById(Long id);
 

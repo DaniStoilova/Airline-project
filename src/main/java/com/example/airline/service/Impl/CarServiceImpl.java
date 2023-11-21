@@ -95,7 +95,7 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
-    public void updateCar(RentACar rentACar, UpdateCarDto updateCarDto) {
+    public RentACar updateCar(RentACar rentACar, UpdateCarDto updateCarDto) {
 
         rentACar.setModel(updateCarDto.getModel());
         rentACar.setBag(updateCarDto.getBag());
@@ -105,7 +105,7 @@ public class CarServiceImpl implements CarService {
         rentACar.setSeats(updateCarDto.getSeats());
         rentACar.setPickUpAndDropLocation(updateCarDto.getPickUpAndDropLocation());
 
-        rentCarRepository.save(rentACar);
+       return rentCarRepository.save(rentACar);
 
     }
 

@@ -25,7 +25,7 @@ public interface CarService {
 
     Optional<RentACar> findById(Long id);
 
-    void updateCar(RentACar rentACar, UpdateCarDto updateCarDto);
+    RentACar updateCar(RentACar rentACar, UpdateCarDto updateCarDto);
 
     void bookCar(Long id, User user);
 }

@@ -2,7 +2,7 @@ package com.example.airline.web;
 
 import com.example.airline.model.dto.HotelDto;
 import com.example.airline.model.entity.Hotel;
-import com.example.airline.model.entity.UserEntity;
+
 import com.example.airline.model.enums.CountryEnum;
 import com.example.airline.model.enums.PropertyType;
 import org.junit.jupiter.api.BeforeEach;
@@ -28,9 +28,9 @@ public class HotelControllerTestIT {
     @Autowired
     MockMvc mockMvc;
 
-    private UserEntity testUser, testAdmin;
 
-    private Hotel testHotel, testAdminOffer;
+
+    private Hotel testHotel;
 
     private HotelDto hotelDto;
 

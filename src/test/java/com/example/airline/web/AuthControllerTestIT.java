@@ -80,8 +80,8 @@ public class AuthControllerTestIT {
     @Test
     void testRegisterWithWrongInputDate() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.post("/users/register").
-                        param("email", "lora@lora.bg").
-                        param("firstName", "loraa").
+                        param("email", "lora").
+                        param("firstName", "lora").
                         param("lastName", "lora").
                         param("password", "7777").
                         param("confirmPassword", "7777").

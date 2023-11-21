@@ -63,7 +63,7 @@ public class FlightServiceImpl implements FlightService {
     }
 
     @Override
-    public void updateFlight(Flight update, UpdateFlightDto updateFlightDto) {
+    public Flight updateFlight(Flight update, UpdateFlightDto updateFlightDto) {
 
         update.setAgeEnum(updateFlightDto.getAgeEnum());
         update.setTripEnum(updateFlightDto.getTripEnum());
@@ -75,7 +75,7 @@ public class FlightServiceImpl implements FlightService {
         update.setPrice(updateFlightDto.getPrice());
 
 
-        flightRepository.save(update);
+       return flightRepository.save(update);
 
     }
 
