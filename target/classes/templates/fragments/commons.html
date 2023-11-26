@@ -45,9 +45,9 @@
           <button type="submit" class="nav-link mx-3" sec:authorize="isAuthenticated()" th:text="#{navbar_logout}">Logout</button>
           </form>
         </li>
-<!--        <li class="nav-item">-->
-<!--          <a class="nav-link mx-3" href="/all" sec:authorize="isAuthenticated()">View Flights</a>-->
-<!--        </li>-->
+        <li class="nav-item">
+          <a class="nav-link mx-3"  sec:authorize="isAuthenticated()" th:href="@{/users/profile}" th:text="#{navbar_profile}">Profile</a>
+        </li>
         <li class="nav-item">
           <a class="nav-link mx-3" href="/add"  sec:authorize="hasRole('ADMIN')" th:text="#{navbar_add_flight}">AddFlight</a>
         </li>

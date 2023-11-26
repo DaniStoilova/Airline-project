@@ -1,12 +1,15 @@
 package com.example.airline.service.Impl;
 
 import com.example.airline.model.binding.UserRegisterBindingModel;
+import com.example.airline.model.dto.UpdateProfileDto;
+import com.example.airline.model.dto.UserProfileDto;
 import com.example.airline.model.entity.UserEntity;
 import com.example.airline.model.enums.RoleEnum;
 import com.example.airline.repository.RoleRepository;
 import com.example.airline.repository.UserRepository;
 import com.example.airline.service.UserService;
 import org.modelmapper.ModelMapper;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -53,6 +56,49 @@ public class UserServiceImpl implements UserService {
 
         this.userRepository.saveAndFlush(user);
     }
+
+    @Override
+    public UserProfileDto getLoggedUserDTO(String username) {
+        return this.modelMapper.map(this.getLoggedUser(username), UserProfileDto.class);
+    }
+
+    @Override
+    public Optional<UpdateProfileDto> getUpdateProfile(Long id) {
+        return userRepository.findById(id).map(p->modelMapper.map(p,UpdateProfileDto.class));
+    }
+
+    @Override
+    public UserEntity updateProfile(UserEntity user, UpdateProfileDto updateProfile) {
+
+        user.setFirstName(updateProfile.getFirstName());
+        user.setLastName(updateProfile.getLastName());
+        user.setEmail(updateProfile.getEmail());
+        user.setPhoneNumber(updateProfile.getPhoneNumber());
+
+        if (updateProfile.getPassword().isEmpty()) {
+            user.setPassword(passwordEncoder.encode(updateProfile.getPassword()));
+        }
+
+
+        return userRepository.save(user);
+    }
+
+    @Override
+    public Optional<UserEntity> findById(Long id) {
+        return userRepository.findById(id);
+    }
+
+    @Override
+    public void deleteById(String username) {
+        Optional<UserEntity> user = this.userRepository.findByEmail(username);
+        this.userRepository.deleteById(user.get().getId());
+    }
+
+    public Optional<UserEntity> getLoggedUser(String username){
+        return userRepository.findByEmail(username);
+
+    }
+
 
     @Override
     public boolean existsByEmail(String value) {
