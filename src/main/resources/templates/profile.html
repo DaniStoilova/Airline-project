@@ -11,26 +11,24 @@
                 <div class="text-center"><img src="/image/profile.png" width="100" ></div>
                 <div  class="text-center mt-3">
                     <h5 class="mt-4 mb-0">First name</h5>
-
                     <span th:text="*{firstName}"></span>
-
                     <h5 class="mt-2 mb-0">Last name</h5>
-
                     <span th:text="*{lastName}"></span>
-
                     <h5 class="mt-2 mb-0">Email</h5>
-
                     <span th:text="*{email}"></span>
                     <h5 class="mt-2 mb-0">Phone number</h5>
-
                     <span th:text="*{phoneNumber}"></span>
 
                 </div>
                 <div class="text-center">
-                <button class="read-more-btn"><a th:href="@{updateProfile/{id}(id=*{id})}">Edit</a></button>
-                <button class="read-more-btn"><a href="/">Back</a></button>
-                    <form class="read-more-btn" th:action="@{/users/delete-profile}" th:method="post">
-                        <button type="submit" class="read-more-btn">Delete</button>
+                    <br>
+                    <br>
+               <a class="btn btn-primary" type="submit" th:href="@{updateProfile/{id}(id=*{id})}">Edit</a>
+                    <a class="btn btn-light" type="submit" href="/">Back</a>
+                    <br>
+                    <br>
+                    <form  th:action="@{/users/delete-profile}" th:method="post">
+                        <button type="submit" class="btn btn-danger">Delete</button>
                     </form>
                 </div>
             </div>

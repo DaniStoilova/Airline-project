@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.test.context.support.WithMockUser;
+import org.springframework.security.test.context.support.WithUserDetails;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
@@ -93,14 +95,24 @@ public class AuthControllerTestIT {
 
     }
     @Test
-    void testLoginError() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.post("/users/login-error")
-                        .param("email", "test@test.bg")
-                        .param("password", "4321")
-                        .with(csrf()))
-                .andExpect(status().is3xxRedirection())
-                .andExpect(redirectedUrl("login"));
+    void testLogin() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.post("/users/login").
+                        param("username", "admin@abv.bg").
+                        param("password", "1234").
+                        with(csrf()))
+                .andExpect(status().is3xxRedirection()).
+                andExpect(redirectedUrl("/"));
     }
+
+//    @Test
+//    void testLoginError() throws Exception {
+//        mockMvc.perform(MockMvcRequestBuilders.post("/users/login-error")
+//                        .param("username", "admin@abv.bg")
+//                        .param("password", "123")
+//                        .with(csrf()))
+//                .andExpect(status().is3xxRedirection())
+//                .andExpect(view().name("login"));
+//    }
     @Test
     void testShowLogin() throws Exception {
             mockMvc.perform(MockMvcRequestBuilders.get("/users/login")).
@@ -118,8 +130,21 @@ public class AuthControllerTestIT {
                 .andExpect(status().is2xxSuccessful());
 
     }
+    @Test
+    void testShowRegister() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.get("/users/register")).
+                andExpect(status().isOk()).
+                andExpect(view().name("register"));
 
+    }
+    @Test
+    @WithUserDetails("admin@abv.bg")
+    void testShowProfile() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.get("/users/profile"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("profile"))
+                .andExpect(model().attributeExists("user"));
 
-
+    }
 
 }

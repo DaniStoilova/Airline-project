@@ -99,9 +99,9 @@ public class AuthController {
             return "redirect:/updateProfile/" + id;
         }
 
-        userService.updateProfile(user, updateProfile);
+            userService.updateProfile(user, updateProfile);
 
-        return "redirect:/";
+        return "redirect:/users/profile";
     }
     @PostMapping("/delete-profile")
     public String deleteProfile(@AuthenticationPrincipal User user){

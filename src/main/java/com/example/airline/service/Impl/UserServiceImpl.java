@@ -8,7 +8,9 @@ import com.example.airline.model.enums.RoleEnum;
 import com.example.airline.repository.RoleRepository;
 import com.example.airline.repository.UserRepository;
 import com.example.airline.service.UserService;
+import jakarta.transaction.Transactional;
 import org.modelmapper.ModelMapper;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -75,7 +77,8 @@ public class UserServiceImpl implements UserService {
         user.setEmail(updateProfile.getEmail());
         user.setPhoneNumber(updateProfile.getPhoneNumber());
 
-        if (updateProfile.getPassword().isEmpty()) {
+
+        if (!updateProfile.getPassword().isEmpty()) {
             user.setPassword(passwordEncoder.encode(updateProfile.getPassword()));
         }
 
