@@ -5,6 +5,7 @@ import com.example.airline.model.dto.AllFlightDTO;
 import com.example.airline.model.dto.TicketDto;
 import com.example.airline.model.dto.UpdateFlightDto;
 import com.example.airline.model.entity.Flight;
+import com.example.airline.model.enums.CountryEnum;
 import org.springframework.security.core.userdetails.User;
 
 import java.math.BigDecimal;
@@ -34,4 +35,6 @@ public interface FlightService {
 
 
     Optional<AllFlightDTO> findFlightById(Long id);
+
+    List<Flight> getAllFlightsWithOrigin(String origin,String destination);
 }

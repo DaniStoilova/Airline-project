@@ -6,6 +6,7 @@ import com.example.airline.model.dto.AllFlightDTO;
 import com.example.airline.model.dto.TicketDto;
 import com.example.airline.model.dto.UpdateFlightDto;
 import com.example.airline.model.entity.Flight;
+import com.example.airline.model.enums.CountryEnum;
 import com.example.airline.service.FlightService;
 import jakarta.validation.Valid;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -13,10 +14,7 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.math.BigDecimal;
@@ -157,6 +155,37 @@ public class FlightController {
         return "checkout";
     }
 
+    @GetMapping("/search")
+    public String searchFlight(Model model){
+
+//        model.addAttribute("flights", flightService.getAllFlights());
+        return "search";
+
+    }
+    @PostMapping("/search")
+    public String searchFlight(@RequestParam(value="origin") String origin,
+                               @RequestParam(value="destination") String destination,
+                               Model model){
+
+        if  (origin.equals("") || destination.equals("")){
+            return "search";
+        }
+
+        List<Flight> origins = this.flightService.getAllFlightsWithOrigin(origin,destination);
+
+        model.addAttribute("origins", origins);
+
+        if (origins.isEmpty()) {
+            model.addAttribute("notFlightAvailable", "No flight found");
+        } else {
+            model.addAttribute("origins", origins);
+        }
+
+//        model.addAttribute("flights", flightService.getAllFlights());
+
+        return "search";
+
+    }
 
 }
 

@@ -10,10 +10,10 @@ import java.math.BigDecimal;
 @Table(name="hotels")
 public class Hotel extends BaseEntity{
 
-    @Column(nullable = false)
+//    @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private CountryEnum location;
-    @Column(nullable = false)
+//    @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private PropertyType propertyType;
 

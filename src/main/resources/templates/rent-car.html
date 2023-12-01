@@ -16,8 +16,8 @@
             <select th:field="*{pickUpAndDropLocation}" th:errorclass="'is-invalid alert-danger'">
             <option value="" selected>Pick-up location</option>
             <option th:each="p : ${T(com.example.airline.model.enums.CountryEnum).values()}" th:text="${p}" th:value="${p}">London</option><small th:if="${#fields.hasErrors('model')}" th:errors="*{model}"  class="form-text text-muted"></small>
-                <small th:if="${#fields.hasErrors('pickUpAndDropLocation')}" th:errors="*{pickUpAndDropLocation}"  class="form-text text-muted"></small>
             </select >
+            <small th:if="${#fields.hasErrors('pickUpAndDropLocation')}" th:errors="*{pickUpAndDropLocation}"  class="form-text text-muted"></small>
         </div>
         <div class="car">
             <div>

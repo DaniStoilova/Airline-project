@@ -23,10 +23,12 @@
                     <option value="" selected>Location</option>
                     <option th:each="p : ${T(com.example.airline.model.enums.CountryEnum).values()}" th:text="${p}" th:value="${p}">London</option>
                 </select>
+                <small th:if="${#fields.hasErrors('location')}" th:errors="*{location}"></small>
                 <select th:field="*{propertyType}" th:errorclass="'is-invalid alert-danger'">
                     <option value="" selected>Property Type</option>
                     <option th:each="p : ${T(com.example.airline.model.enums.PropertyType).values()}" th:text="${p}" th:value="${p}">One</option>
                 </select>
+                <small th:if="${#fields.hasErrors('propertyType')}" th:errors="*{propertyType}"></small>
                 <div>
                     <input type="number" th:field="*{price}" th:errorclass="'is-invalid alert-danger'" placeholder="Price">
                     <small th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></small>

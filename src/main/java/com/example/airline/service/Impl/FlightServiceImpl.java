@@ -6,6 +6,7 @@ import com.example.airline.model.dto.TicketDto;
 import com.example.airline.model.dto.UpdateFlightDto;
 import com.example.airline.model.entity.Flight;
 import com.example.airline.model.entity.UserEntity;
+import com.example.airline.model.enums.CountryEnum;
 import com.example.airline.repository.FlightRepository;
 import com.example.airline.repository.UserRepository;
 import com.example.airline.service.FlightService;
@@ -129,6 +130,12 @@ public class FlightServiceImpl implements FlightService {
     @Override
     public Optional<AllFlightDTO> findFlightById(Long id) {
         return flightRepository.findById(id).map(fl-> modelMapper.map(fl, AllFlightDTO.class));
+    }
+
+    @Override
+    public List<Flight> getAllFlightsWithOrigin(String origin,String destination) {
+        return flightRepository.findAllByOriginAndDestination(CountryEnum.valueOf(origin),CountryEnum.valueOf(destination));
+
     }
 
 

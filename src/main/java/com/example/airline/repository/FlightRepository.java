@@ -1,7 +1,9 @@
 package com.example.airline.repository;
 
 
+import com.example.airline.model.dto.AllFlightDTO;
 import com.example.airline.model.entity.Flight;
+import com.example.airline.model.enums.CountryEnum;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -20,6 +22,8 @@ public interface FlightRepository extends JpaRepository<Flight,Long> {
 
 
     List<Flight> findAllByPriceIsLessThan(BigDecimal price);
+
+    List<Flight> findAllByOriginAndDestination(CountryEnum origin,CountryEnum destination);
 
 
 }

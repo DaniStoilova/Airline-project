@@ -31,7 +31,7 @@ public class RentACar extends BaseEntity {
 //        this.days = days;
 //    }
 
-    @Column(nullable = false)
+
     @Enumerated(EnumType.STRING)
     private CountryEnum pickUpAndDropLocation;
 
