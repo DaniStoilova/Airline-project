@@ -37,4 +37,6 @@ public interface FlightService {
     Optional<AllFlightDTO> findFlightById(Long id);
 
     List<Flight> getAllFlightsWithOrigin(String origin,String destination);
+
+
 }

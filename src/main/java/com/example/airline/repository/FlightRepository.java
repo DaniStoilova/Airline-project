@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Optional;
 
 
 @Repository
@@ -24,6 +25,7 @@ public interface FlightRepository extends JpaRepository<Flight,Long> {
     List<Flight> findAllByPriceIsLessThan(BigDecimal price);
 
     List<Flight> findAllByOriginAndDestination(CountryEnum origin,CountryEnum destination);
+
 
 
 }

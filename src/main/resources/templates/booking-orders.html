@@ -9,42 +9,39 @@
   <div class="table-responsive text-nowrap">
     <div class="boardingPass">
       <div>
-        <h2>Car orders</h2>
+        <h2>Booking orders</h2>
       </div>
     </div>
-    <table th:object="${cars}" class="table table-striped" >
+    <table th:each="h:${allBook}" class="table table-striped" >
       <thead>
       <tr>
         <th>#</th>
-        <th class="th-sm">Date</th>
-        <th class="th-sm">Full name</th>
-        <th class="th-sm">Phone</th>
-        <th class="th-sm">Location</th>
-        <th class="th-sm">Model</th>
+        <th class="th-sm">Flight number</th>
+        <th class="th-sm">Passenger</th>
+        <th class="th-sm">Passport Number</th>
+        <th class="th-sm">Origin</th>
+        <th class="th-sm">Destination</th>
         <th class="th-sm">Seats</th>
-        <th class="th-sm">Bag</th>
-        <th class="th-sm">Doors</th>
-        <th class="th-sm">Fuel</th>
         <th class="th-sm">Price</th>
+        <th class="th-sm">Book status</th>
 
       </tr>
       </thead>
       <tbody>
       <tr>
-        <th scope="row" th:text="*{id}">1</th>
-        <th th:text="*{date}"></th>
-        <th th:text="|*{firstName}  *{lastName}|" >Ivan Ivanov</th>
-        <th th:text="*{phoneNumber}"></th>
-        <th th:text="*{pickUpAndDropLocation}"></th>
-        <th th:text="*{model}"></th>
-        <th th:text="*{seats}"></th>
-        <th th:text="*{bag}"></th>
-        <th th:text="*{doors}"></th>
-        <th th:text="*{fuelType}"></th>
-        <th th:text="*{price}"></th>
+        <th scope="row" th:text="*{h.id}">1</th>
+        <th th:text="*{h.getFlight().flightNumber}"></th>
+        <th th:text="*{h.fullName}"></th>
+        <th th:text="*{h.passportNumber}"></th>
+        <th th:text="*{h.getFlight().origin}"></th>
+        <th th:text="*{h.getFlight().destination}"></th>
+        <th th:text="*{h.seats}"></th>
+        <th th:text="*{h.getFlight().price}"></th>
+        <th th:text="*{h.bookingStatus}"></th>
 
-        <form th:action="@{/bookCar/{id}(id=*{id})}"  >
-          <th><button class="btn btn-success">Confirm reservation</button></th>
+
+        <form th:action="@{/cancelBooking/{id}(id=*{h.id})}" >
+          <th><button class="btn btn-danger">Cancel Booking</button></th>
         </form>
 
       </tr>

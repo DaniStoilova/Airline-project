@@ -1,7 +1,9 @@
 package com.example.airline.service.Impl;
 
 
+import com.example.airline.model.entity.Booking;
 import com.example.airline.model.entity.Flight;
+import com.example.airline.service.BookingService;
 import com.example.airline.service.FlightService;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
@@ -21,11 +23,14 @@ public class EmailServiceImpl  {
     private final JavaMailSender javaMailSender;
     private final FlightService flightService;
 
+    private final BookingService bookingService;
+
     public EmailServiceImpl(TemplateEngine templateEngine,
-                            JavaMailSender javaMailSender, FlightService flightService) {
+                            JavaMailSender javaMailSender, FlightService flightService, BookingService bookingService) {
         this.templateEngine = templateEngine;
         this.javaMailSender = javaMailSender;
         this.flightService = flightService;
+        this.bookingService = bookingService;
     }
 
     public void sendRegistrationEmail(
@@ -101,6 +106,30 @@ public class EmailServiceImpl  {
                 throw new RuntimeException(e);
             }
         }
+    public void sendBooking(String email,String fullName,String passportNumber,String flightNumber) {
+        MimeMessage mimeMessage = javaMailSender.createMimeMessage();
+
+        try {
+            MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMessage);
+            mimeMessageHelper.setFrom("flight@example.com");
+            mimeMessageHelper.setTo(email);
+            mimeMessageHelper.setSubject("Confirmation Bookings!");
+
+            List<Booking> bookings = bookingService.getBook(fullName);
+            mimeMessageHelper.setText(generateMessageBooking(bookings), true);
+
+
+            javaMailSender.send(mimeMessageHelper.getMimeMessage());
+        } catch (MessagingException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    private String generateMessageBooking(List<Booking> bookings) {
+        Context context = new Context();
+        context.setVariable("bookings", bookings);
+        return templateEngine.process("email/bookings", context);
+
+    }
 
 
 }

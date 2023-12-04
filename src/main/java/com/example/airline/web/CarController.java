@@ -87,7 +87,7 @@ public class CarController {
     }
 
 
-    @GetMapping("rentAll")
+    @GetMapping("/rentAll")
     public String all(Model model) {
 
         List<AllCarsDto> allCars = carService.getAllCars();
@@ -98,7 +98,7 @@ public class CarController {
 
     }
 
-    @GetMapping("rent/{id}")
+    @GetMapping("/rent/{id}")
     public String confirmRent(Model model,@PathVariable("id") Long id,@AuthenticationPrincipal User user) {
 
         CarDto carDto = carService.getCarById(id,user)

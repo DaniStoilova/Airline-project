@@ -124,16 +124,16 @@ public class FlightController {
 
 
     }
-    @PostMapping("/buy/{id}")
-    public String buyItem(@PathVariable("id") Long id, Model model,@AuthenticationPrincipal User user) {
-
-        this.flightService.buyTicket(id,user);
-
-        model.addAttribute("flightId", id);
-
-
-        return "successfull-flight";
-    }
+//    @PostMapping("/buy/{id}")
+//    public String buyItem(@PathVariable("id") Long id, Model model,@AuthenticationPrincipal User user) {
+//
+//        this.flightService.buyTicket(id,user);
+//
+//        model.addAttribute("flightId", id);
+//
+//       return "successfull-flight";
+//
+//    }
 
     @PostMapping("/cancell/{id}")
     public String back(@PathVariable("id") Long id, Model model) {

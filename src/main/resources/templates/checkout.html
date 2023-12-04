@@ -50,7 +50,7 @@
             <p th:text="|Price: *{price} lv|">Price: {price} lv</p>
             <div  class="mt-3 ">
                 <span th:text="|Total: ${total} lv|"></span>
-                <form th:action="@{/buy/{id}(id=*{id})}" method="post">
+                <form th:action="@{/buy}" >
                     <th><button>Buy</button></th>
                 </form>
                 <br>

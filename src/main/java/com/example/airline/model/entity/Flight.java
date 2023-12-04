@@ -9,6 +9,8 @@ import jakarta.persistence.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name="flights")
@@ -34,8 +36,19 @@ public class Flight extends BaseEntity {
     @ManyToOne
     private UserEntity passenger;
 
+    @OneToMany(mappedBy = "flight",fetch = FetchType.LAZY)
+    private Set<Booking> bookings = new HashSet<>();
+
 
     public Flight() {
+    }
+
+    public Set<Booking> getBookings() {
+        return bookings;
+    }
+
+    public void setBookings(Set<Booking> bookings) {
+        this.bookings = bookings;
     }
 
     public String getFlightNumber() {
