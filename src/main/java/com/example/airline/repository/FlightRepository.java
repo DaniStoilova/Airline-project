@@ -3,6 +3,7 @@ package com.example.airline.repository;
 
 import com.example.airline.model.dto.AllFlightDTO;
 import com.example.airline.model.entity.Flight;
+import com.example.airline.model.entity.UserEntity;
 import com.example.airline.model.enums.CountryEnum;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

@@ -46,6 +46,7 @@ public class FlightServiceImpl implements FlightService {
 
         flight.setPassenger(pass);
 
+
         flightRepository.save(flight);
 
 

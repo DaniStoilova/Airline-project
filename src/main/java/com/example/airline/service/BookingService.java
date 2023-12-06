@@ -3,6 +3,8 @@ package com.example.airline.service;
 import com.example.airline.model.binding.BookingBindingModel;
 import com.example.airline.model.dto.AllBookings;
 import com.example.airline.model.entity.Booking;
+import com.example.airline.model.entity.UserEntity;
+import org.springframework.security.core.userdetails.User;
 
 
 import java.util.List;
@@ -18,4 +20,6 @@ public interface BookingService {
 
 
     List<Booking> getBook(String fullName);
+
+
 }

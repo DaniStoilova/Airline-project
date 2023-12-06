@@ -25,6 +25,7 @@ public class NewsletterScheduler {
     }
 
     @Scheduled(cron="@monthly")
+//        @Scheduled(cron = "*/15 * * * * *")
         public void sendNewFlights() {
 
 

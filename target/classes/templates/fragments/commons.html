@@ -64,6 +64,9 @@
         <li class="nav-item">
           <a class="nav-link mx-3" href="/hotel"  sec:authorize="hasRole('ADMIN')" th:text="#{navbar_add_hotel}">AddHotel</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link mx-3" href="/allBooking"  sec:authorize="hasRole('ADMIN')" th:text="#{navbar_booking}">Booking</a>
+        </li>
         <form th:method="get">
           <label class="text-white" th:text="#{navbar_language}" for="lang"></label>
           <select

@@ -36,7 +36,7 @@
                 <option th:each="p : ${T(com.example.airline.model.enums.CountryEnum).values()}" th:text="${p}" th:value="${p}"></option>
             </select>
             <small th:if="${#fields.hasErrors('destination')}" th:errors="*{destination}"></small>
-            <input th:field="*{depTime}" th:errorclass="'is-invalid alert-danger'" name="depTime" type="datetime-local" class="form-control" placeholder="Date">
+            <input th:field="*{depTime}" th:errorclass="'is-invalid alert-danger'" name="depTime"  type="datetime-local"  class="form-control" placeholder="Date">
              <small th:if="${#fields.hasErrors('depTime')}" th:errors="*{depTime}"></small>
         </div>
         <div class="description"  >

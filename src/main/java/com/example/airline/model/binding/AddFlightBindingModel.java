@@ -32,7 +32,6 @@ public class AddFlightBindingModel {
 
     @NotNull(message = INVALID_DATE_EMPTY )
     @Future(message = INVALID_DATE)
-//    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     private LocalDateTime depTime;
 
    @NotNull(message = INVALID_ENUM)

@@ -6,6 +6,7 @@ import com.example.airline.model.enums.ClassEnum;
 import com.example.airline.model.enums.CountryEnum;
 import com.example.airline.model.enums.TripEnum;
 import jakarta.persistence.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -26,7 +27,9 @@ public class Flight extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private CountryEnum destination;
     @Column(nullable = false)
+//    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:00:0000")
     private LocalDateTime depTime;
+
     @Enumerated(EnumType.STRING)
     private AgeEnum ageEnum;
     @Enumerated(EnumType.STRING)
@@ -36,20 +39,20 @@ public class Flight extends BaseEntity {
     @ManyToOne
     private UserEntity passenger;
 
-    @OneToMany(mappedBy = "flight",fetch = FetchType.LAZY)
-    private Set<Booking> bookings = new HashSet<>();
+//    @OneToMany(mappedBy = "flight",fetch = FetchType.LAZY)
+//    private Set<Booking> bookings = new HashSet<>();
 
 
     public Flight() {
     }
 
-    public Set<Booking> getBookings() {
-        return bookings;
-    }
-
-    public void setBookings(Set<Booking> bookings) {
-        this.bookings = bookings;
-    }
+//    public Set<Booking> getBookings() {
+//        return bookings;
+//    }
+//
+//    public void setBookings(Set<Booking> bookings) {
+//        this.bookings = bookings;
+//    }
 
     public String getFlightNumber() {
         return flightNumber;

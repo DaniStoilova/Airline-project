@@ -4,9 +4,12 @@
 <head th:replace="~{fragments/commons::head}"></head>
 <body>
 <header th:replace="~{fragments/commons::navbar}"></header>
-<div class="container-fluid" id="successfully">
-<h1 class="main_form">Your Payment Successfully Received! We send your confirmation booking on email.</h1>
-<h2>Thank you!</h2>
+<div class="container-fluid" id="error">
+  <h1 class="main_form">Whoops
+    Looks like this page has flown away.We've encountered a little problem.
+    Don't worry, we are working on it!
+    <span></span></h1>
+  <a href="/"><button><i class="fa-solid fa-plane-departure"></i>HOME PAGE</button></a>
 </div>
 <footer th:replace="~{fragments/commons::footer}"></footer>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

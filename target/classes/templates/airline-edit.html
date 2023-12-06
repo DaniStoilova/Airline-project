@@ -36,7 +36,7 @@
             <option th:each="p : ${T(com.example.airline.model.enums.CountryEnum).values()}" th:text="${p}" th:value="${p}"></option>
         </select>
         <div class="form-group">
-            <input th:field="*{depTime}" name="depTime" type="datetime-local" class="form-control" placeholder="Date">
+            <input th:field="*{depTime}" name="depTime" type="text" class="form-control" placeholder="Date">
         </div>
     </div>
     <div class="description"  >

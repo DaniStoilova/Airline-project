@@ -2,10 +2,15 @@ package com.example.airline.web;
 
 import com.example.airline.model.binding.BookingBindingModel;
 import com.example.airline.model.dto.AllBookings;
+import com.example.airline.model.entity.Flight;
+import com.example.airline.model.entity.UserEntity;
 import com.example.airline.service.BookingService;
 import com.example.airline.service.FlightService;
 import com.example.airline.service.Impl.EmailServiceImpl;
+import com.example.airline.service.UserService;
 import jakarta.validation.Valid;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 
 import org.springframework.ui.Model;
@@ -14,6 +19,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class BookingController {
@@ -21,14 +27,17 @@ public class BookingController {
 
     private BookingService bookingService;
 
+    private UserService userService;
+
     private FlightService flightService;
 
     private EmailServiceImpl emailService;
 
 
 
-    public BookingController(BookingService bookingService, FlightService flightService, EmailServiceImpl emailService) {
+    public BookingController(BookingService bookingService, UserService userService, FlightService flightService, EmailServiceImpl emailService) {
         this.bookingService = bookingService;
+        this.userService = userService;
 
         this.flightService = flightService;
         this.emailService = emailService;
@@ -75,6 +84,8 @@ public class BookingController {
 
         return "booking-orders";
     }
+
+
     @GetMapping("/cancelBooking/{id}")
     public String buyHotel(@PathVariable("id") Long id){
 

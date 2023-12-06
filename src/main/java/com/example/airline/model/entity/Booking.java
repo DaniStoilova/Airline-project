@@ -8,9 +8,9 @@ public class Booking extends BaseEntity {
 
     @Column(nullable = false)
     private String fullName;
-    @Column(nullable = false,unique = true)
+    @Column(nullable = false)
     private String email;
-    @Column(nullable = false,unique = true)
+    @Column(nullable = false)
     private String passportNumber;
 
     @Column(nullable = false)

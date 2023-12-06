@@ -2,19 +2,19 @@ package com.example.airline.service.Impl;
 
 import com.example.airline.model.binding.BookingBindingModel;
 import com.example.airline.model.dto.AllBookings;
-import com.example.airline.model.dto.AllCarsDto;
-import com.example.airline.model.dto.AllFlightDTO;
 import com.example.airline.model.entity.Booking;
 import com.example.airline.model.entity.Flight;
+import com.example.airline.model.entity.UserEntity;
 import com.example.airline.repository.BookingRepository;
 import com.example.airline.repository.FlightRepository;
 import com.example.airline.service.BookingService;
 import com.example.airline.service.FlightService;
 import org.modelmapper.ModelMapper;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
+
 import java.util.stream.Collectors;
 
 
@@ -44,6 +44,7 @@ public class BookingServiceImpl implements BookingService {
         booking.setId(bookingBindingModel.getId());
         booking.setFlight(bookingBindingModel.getFlight());
 
+
         bookingRepository.save(booking);
 
 
@@ -64,5 +65,7 @@ public class BookingServiceImpl implements BookingService {
     public List<Booking> getBook(String fullName) {
         return bookingRepository.findByFullName(fullName);
     }
+
+
 
 }
