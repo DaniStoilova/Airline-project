@@ -63,6 +63,8 @@ public class BookingControllerTestIT {
     }
 
     @Test
+    @WithMockUser(username = "pesho@abv.bg",
+            roles = {"USER"})
     void testGetAllReservation() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/allBooking"))
                 .andExpect(status().isOk())

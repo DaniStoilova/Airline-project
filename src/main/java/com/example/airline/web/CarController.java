@@ -7,6 +7,7 @@ import com.example.airline.model.dto.CarDto;
 import com.example.airline.model.dto.UpdateCarDto;
 import com.example.airline.model.entity.RentACar;
 import com.example.airline.service.CarService;
+import com.example.airline.service.Impl.EmailServiceImpl;
 import jakarta.validation.Valid;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.User;
@@ -28,9 +29,11 @@ public class CarController {
 
     private CarService carService;
 
-    public CarController(CarService carService) {
-        this.carService = carService;
+    private EmailServiceImpl emailService;
 
+    public CarController(CarService carService, EmailServiceImpl emailService) {
+        this.carService = carService;
+        this.emailService = emailService;
     }
 
     @GetMapping("/car")
@@ -116,12 +119,11 @@ public class CarController {
 
         carService.bookCar(id,user);
 
+        emailService.sendConformation(id,user.getUsername());
+
         return "redirect:/";
 
     }
-
-
-
 
     @PostMapping("/bookCar/{id}")
     public String bookCar(@PathVariable("id") Long id){

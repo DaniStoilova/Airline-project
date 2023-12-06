@@ -8,6 +8,7 @@ import com.example.airline.model.dto.HotelDto;
 import com.example.airline.model.dto.UpdateHotelDto;
 import com.example.airline.model.entity.Hotel;
 import com.example.airline.service.HotelService;
+import com.example.airline.service.Impl.EmailServiceImpl;
 import jakarta.validation.Valid;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.User;
@@ -27,8 +28,13 @@ public class HotelController {
 
     private final HotelService hotelService;
 
-    public HotelController(HotelService hotelService) {
+    private EmailServiceImpl emailService;
+
+
+
+    public HotelController(HotelService hotelService, EmailServiceImpl emailService) {
         this.hotelService = hotelService;
+        this.emailService = emailService;
     }
 
     @GetMapping("/hotel")
@@ -110,6 +116,8 @@ public class HotelController {
     public String buyHotel(@PathVariable("id") Long id, @AuthenticationPrincipal User user){
 
         hotelService.buyHotel(id,user);
+
+        emailService.sendConformation(id,user.getUsername());
 
         return "redirect:/";
 

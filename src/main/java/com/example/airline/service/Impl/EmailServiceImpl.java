@@ -130,6 +130,38 @@ public class EmailServiceImpl  {
         return templateEngine.process("email/bookings", context);
 
     }
+    public void sendConformation(Long id,String userEmail) {
+        MimeMessage mimeMessage = javaMailSender.createMimeMessage();
+
+        try {
+            MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMessage);
+            mimeMessageHelper.setFrom(userEmail);
+            mimeMessageHelper.setTo("flight@example.com");
+            mimeMessageHelper.setSubject("Confirmation Reservation!");
+
+            StringBuilder sb = new StringBuilder();
+            sb.append("RESERVATION CONFIRMATION \n" +
+                            "\n" +
+                            "Dear Mr./Ms., \n" +
+                            "\n" +
+                            "Thank you for choosing to stay with us." +
+                            "\nWe are pleased to confirm your reservation with number: "+ id +".")
+                    .append(System.lineSeparator())
+                    .append("Please keep your reservation number and your confirmation email.")
+                    .append(System.lineSeparator())
+                    .append(System.lineSeparator())
+                    .append("For more question please text an email - info@confirm.bg")
+                    .append(System.lineSeparator())
+                    .append(System.lineSeparator())
+                            .append("All the best");
+
+            mimeMessageHelper.setText(sb.toString());
+
+            javaMailSender.send(mimeMessageHelper.getMimeMessage());
+        } catch (MessagingException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
 
 }

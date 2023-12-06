@@ -75,9 +75,9 @@ public class BookingController {
     }
 
     @GetMapping("/allBooking")
-    public String allBook(Model model) {
+    public String allBook(Model model,@AuthenticationPrincipal User user) {
 
-       List<AllBookings> allBook = bookingService.getAllBookings();
+       List<AllBookings> allBook = bookingService.getAllBookings(user);
 
         model.addAttribute("allBook", allBook);
 

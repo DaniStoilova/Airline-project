@@ -14,7 +14,7 @@ import java.util.Optional;
 public interface BookingService {
     void addBooking(BookingBindingModel bookingBindingModel);
 
-    List<AllBookings> getAllBookings();
+    List<AllBookings> getAllBookings(User user);
 
     void cancell(Long id);
 

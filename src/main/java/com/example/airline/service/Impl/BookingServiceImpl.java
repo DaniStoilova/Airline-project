@@ -51,8 +51,8 @@ public class BookingServiceImpl implements BookingService {
     }
 
     @Override
-    public List<AllBookings> getAllBookings() {
-        return bookingRepository.findAll().stream()
+    public List<AllBookings> getAllBookings(User user) {
+        return bookingRepository.findByEmail(user.getUsername()).stream()
                 .map(all -> modelMapper.map(all, AllBookings.class)).collect(Collectors.toList());
     }
 
