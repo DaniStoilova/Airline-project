@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Hello</title>
+</head>
+<body>
+
+Hello,
+<div th:each="h: ${bookings}">
+<p th:text="*{h.fullName}">
+</p>
+  <p>This is your official itinerary/receipt. You must bring it with you to the airport for check-in and we recommend you keep a copy for your records. Please also take the time to review it as it contains the general conditions of carriage
+    Opens and applicable tariffs
+    in
+    a
+    new
+    window
+    that apply to the tickets, bookings and air services detailed below, as well as baggage, dangerous goods and other important information related to your trip
+    .</p>
+</div>
+<th:block>
+  <div class="container-fluid">
+    <div class="table-responsive text-nowrap">
+      <div>
+        <h2>Booking Confirmation</h2>
+      </div>
+      <table  th:each="h: ${bookings}" class="table table-striped">
+        <thead>
+        <th th:text="|Cabin : *{h.getFlight().classEnum} class|">Economy class</th>
+        <tr>
+          <th>Booking reference</th>
+          <th class="th-sm">Passenger</th>
+          <th class="th-sm">Passport Number</th>
+          <th class="th-sm">Book status</th>
+          <th class="th-sm">Book Flight</th>
+          <th class="th-sm">Flight Date</th>
+          <th class="th-sm">Origin</th>
+          <th class="th-sm">Destination</th>
+          <th class="th-sm">Seat</th>
+
+        </tr>
+        <tr></tr>
+        </thead>
+        <tbody>
+        <tr>
+          <th scope="row" th:text="*{h.id}">1</th>
+          <th th:text="*{h.fullName}"></th>
+          <th th:text="*{h.passportNumber}"></th>
+          <th th:text="*{h.bookingStatus}"></th>
+          <th th:text="*{h.getFlight().flightNumber}"></th>
+          <th th:text="*{h.getFlight().depTime}"></th>
+          <th th:text="*{h.getFlight().origin}"></th>
+          <th th:text="*{h.getFlight().destination}"></th>
+          <th th:text="*{h.seats}"></th>
+        </tbody>
+
+        <th th:text="|Grand total: *{h.getFlight().price} lv|">Grand total</th>
+
+      </table>
+
+    </div>
+  </div>
+</th:block>
+<h3>Check-in and boarding gate deadlines</h3>
+<p>You should arrive no later than the times(90minutes,120minutes,180minutes). This will ensure you have plenty of time to check in, drop off your checked bags and pass
+  through security
+</p>
+<h3>Check-in and baggage drop-off deadline(45 minutes,60 minutes)</h3>
+<p>You must have checked in, obtained your boarding pass and deposited all checked bags at the baggage drop-off counter before the end of the
+  check-in period for your flight.
+</p>
+<h3>Boarding gate deadline (30 minutes,45 minutes)</h3>
+<p>This is the latest you should be at the departure gate, ready for boarding.</p>
+<h3>Boarding gate closes (15 minutes,30 minutes)</h3>
+<p>Arriving after this time will result in reassignment of any reserved seats, the cancellation of reservations, and/or ineligibility for denied boarding
+  compensation.
+</p>
+<h3>Air Passenger Protection Regulations Notice:</h3>
+<p>
+  If you are denied boarding, your flight is cancelled or delayed for at least three hours, or your baggage is lost or damaged, you may be entitled to certain standards of
+  treatment and compensation under the Air Passenger Protection Regulation. For more information about your passenger rights please contact your air carrier or visit the
+  Agency’s website. </p>
+
+
+<p>
+  Best,
+  Airline!
+</p>
+
+</body>
+</html>
