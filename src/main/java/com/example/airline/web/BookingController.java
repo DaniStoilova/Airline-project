@@ -87,9 +87,11 @@ public class BookingController {
 
 
     @GetMapping("/cancelBooking/{id}")
-    public String buyHotel(@PathVariable("id") Long id){
+    public String buyHotel(@PathVariable("id") Long id,@AuthenticationPrincipal User user){
 
         bookingService.cancell(id);
+
+        emailService.sendCancellation(id,user.getUsername());
 
         return "redirect:/";
 
