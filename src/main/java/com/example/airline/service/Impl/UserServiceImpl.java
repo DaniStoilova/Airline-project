@@ -3,6 +3,7 @@ package com.example.airline.service.Impl;
 import com.example.airline.model.binding.UserRegisterBindingModel;
 import com.example.airline.model.dto.UpdateProfileDto;
 import com.example.airline.model.dto.UserProfileDto;
+import com.example.airline.model.entity.RoleEntity;
 import com.example.airline.model.entity.UserEntity;
 import com.example.airline.model.enums.RoleEnum;
 import com.example.airline.repository.RoleRepository;
@@ -17,6 +18,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 
 
@@ -97,6 +99,27 @@ public class UserServiceImpl implements UserService {
         this.userRepository.deleteById(user.get().getId());
     }
 
+    @Override
+    public List<String> findAllUser() {
+        return userRepository.findAllUsers();
+    }
+
+    @Override
+    public void changeRole(String email, RoleEnum role) {
+        UserEntity user = userRepository.findByEmail(email).orElse(null);
+
+
+
+        if (!(user.getRoles().contains(role))) {
+            user.setRoles(Arrays.asList(roleRepository.findByRole(role)));
+
+            userRepository.save(user);
+        }
+    }
+
+
+
+
     public Optional<UserEntity> getLoggedUser(String username){
         return userRepository.findByEmail(username);
 
@@ -135,6 +158,7 @@ public class UserServiceImpl implements UserService {
         user.setPassword(passwordEncoder.encode(userRegisterBindingModel.getPassword()));
 
         user.setRoles(Arrays.asList(roleRepository.findByRole(RoleEnum.USER)));
+
 
 
         this.userRepository.save(user);

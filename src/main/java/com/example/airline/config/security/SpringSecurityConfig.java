@@ -37,7 +37,7 @@ public class SpringSecurityConfig  {
                      .requestMatchers( "/image/**","/static/**", "/css/**").permitAll()
                      .requestMatchers("/","/about" ,"/users/login-error","/contact","/search","/api/**","/allBooking","/all","rentAll","/allReservation","/info","addNews","/users/profile").permitAll()
                      .requestMatchers("/users/login", "/users/register").permitAll()
-                     .requestMatchers("/add","/car","/hotel").hasRole(RoleEnum.ADMIN.name())
+                     .requestMatchers("/add","/car","/hotel","/role").hasRole(RoleEnum.ADMIN.name())
                      .anyRequest().authenticated())
                  .formLogin(
                          (formLogin) ->

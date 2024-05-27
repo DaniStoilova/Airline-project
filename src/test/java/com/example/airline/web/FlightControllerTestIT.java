@@ -63,7 +63,7 @@ public class FlightControllerTestIT {
                         .param("tripEnum","One")
                         .param("origin","London")
                         .param("destination","Sofia")
-                        .param("depTime","2023-12-07T12:01")
+                        .param("depTime","2023-12-30T12:01")
                         .param("ageEnum","Adult")
                         .param("classEnum", "First")
                         .param("price","55")

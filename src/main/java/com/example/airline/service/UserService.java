@@ -4,8 +4,10 @@ import com.example.airline.model.binding.UserRegisterBindingModel;
 import com.example.airline.model.dto.UpdateProfileDto;
 import com.example.airline.model.dto.UserProfileDto;
 import com.example.airline.model.entity.UserEntity;
+import com.example.airline.model.enums.RoleEnum;
 import org.springframework.security.core.userdetails.User;
 
+import java.util.List;
 import java.util.Optional;
 
 
@@ -29,4 +31,9 @@ public interface UserService {
     Optional<UserEntity> findById(Long id);
 
     void deleteById(String username);
+
+    List<String> findAllUser();
+
+
+    void changeRole(String email, RoleEnum role);
 }

@@ -35,7 +35,7 @@ public class UserEntity extends BaseEntity {
 
 
     public UserEntity() {
-        this.roles = new ArrayList<>();
+//        this.roles = new ArrayList<>();
         this.cars = new ArrayList<>();
         this.hotels = new ArrayList<>();
     }
@@ -112,6 +112,9 @@ public class UserEntity extends BaseEntity {
     public void addRoles(RoleEntity role) {
         this.roles.add(role);
     }
+
+
+
 
     public List<RentACar> getCars() {
         return cars;
