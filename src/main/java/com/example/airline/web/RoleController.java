@@ -3,7 +3,6 @@ package com.example.airline.web;
 import com.example.airline.model.enums.RoleEnum;
 import com.example.airline.service.UserService;
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;

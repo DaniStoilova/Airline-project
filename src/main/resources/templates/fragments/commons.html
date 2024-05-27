@@ -36,10 +36,18 @@
         <li class="nav-item">
           <a class="nav-link mx-3" href="/info" th:text="#{navbar_baggage}">Baggage</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link mx-3" href="/role" sec:authorize="hasRole('ADMIN')" th:text="#{navbar_role}">Role</a>
-        </li>
-        <li class="nav-item">
+
+        <li class="nav-item dropdown navbar-light"  sec:authorize="hasRole('ADMIN')">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+             aria-expanded="false" th:text="#{navbar_admin}">Admin</a>
+
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/role" sec:authorize="hasRole('ADMIN')" th:text="#{navbar_role}">Role>Add Role</a>
+            <a class="dropdown-item" href="/add"  sec:authorize="hasRole('ADMIN')" th:text="#{navbar_add_flight}">AddFlight</a>
+            <a class="dropdown-item" href="/car"sec:authorize="hasRole('ADMIN')" th:text="#{navbar_add_car}">AddCar</a>
+            <a class="dropdown-item" href="/hotel"  sec:authorize="hasRole('ADMIN')" th:text="#{navbar_add_hotel}">AddHotel</a>
+
+            <li class="nav-item">
           <a class="nav-link mx-3" sec:authorize=="isAnonymous()" href="users/login" th:text="#{navbar_login}">Login</a>
         </li>
         <li class="nav-item">
@@ -49,18 +57,18 @@
         <li class="nav-item">
           <a class="nav-link mx-3"  sec:authorize="isAuthenticated()" th:href="@{/users/profile}" th:text="#{navbar_profile}">Profile</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link mx-3" href="/add"  sec:authorize="hasRole('ADMIN')" th:text="#{navbar_add_flight}">AddFlight</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link mx-3" href="/car"sec:authorize="hasRole('ADMIN')" th:text="#{navbar_add_car}">AddCar</a>
-        </li>
+<!--        <li class="nav-item">-->
+<!--          <a class="nav-link mx-3" href="/add"  sec:authorize="hasRole('ADMIN')" th:text="#{navbar_add_flight}">AddFlight</a>-->
+<!--        </li>-->
+<!--        <li class="nav-item">-->
+<!--          <a class="nav-link mx-3" href="/car"sec:authorize="hasRole('ADMIN')" th:text="#{navbar_add_car}">AddCar</a>-->
+<!--        </li>-->
 <!--        <li class="nav-item">-->
 <!--          <a class="nav-link mx-3" href="/rentAll" sec:authorize="isAuthenticated()">View Cars</a>-->
 <!--        </li>-->
-        <li class="nav-item">
-          <a class="nav-link mx-3" href="/hotel"  sec:authorize="hasRole('ADMIN')" th:text="#{navbar_add_hotel}">AddHotel</a>
-        </li>
+<!--        <li class="nav-item">-->
+<!--          <a class="nav-link mx-3" href="/hotel"  sec:authorize="hasRole('ADMIN')" th:text="#{navbar_add_hotel}">AddHotel</a>-->
+<!--        </li>-->
         <li class="nav-item">
           <a class="nav-link mx-3" href="/allBooking" sec:authorize="isAuthenticated()"  th:text="#{navbar_booking}">Booking</a>
         </li>
