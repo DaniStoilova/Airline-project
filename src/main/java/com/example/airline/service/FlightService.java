@@ -38,5 +38,4 @@ public interface FlightService {
 
     List<Flight> getAllFlightsWithOrigin(String origin,String destination);
 
-
 }

@@ -42,11 +42,20 @@
                 <input th:field="*{baggage}" th:errorclass="'is-invalid alert-danger'" type="text" class="form-control" placeholder="Baggage">
                 <small th:if="${#fields.hasErrors('baggage')}" th:errors="*{baggage}" class="form-text text-muted"></small>
             </div>
+            <select class="custom-select col-xl-2 col-lg-6 col-md-6 col-sm-6" th:field="*{baggage}" th:errorclass="'is-invalid alert-danger'"
+                    aria-describedby="wayHelpInline">
+                <option value="" selected>Baggage</option>
+                <option selected th:each="b : ${T(com.example.airline.model.enums.BaggageEnum).values()}" th:text="${b}" th:value="${b}">One way</option>
+            </select>
+            <small th:if="${#fields.hasErrors('baggage')}" th:errors="*{baggage}" class="form-text text-muted"></small>
+            <br>
+
             <div class="form-group">
                 <label >Flight</label>
                 <input th:field="*{flight}" th:errorclass="'is-invalid alert-danger'" type="text" class="form-control" placeholder="Flight">
                 <small th:if="${#fields.hasErrors('flight')}" th:errors="*{flight}" class="form-text text-muted"></small>
             </div>
+            <br>
             <button type="submit" class="btn btn-primary">Confirm booking details</button>
           </form>
          </div>

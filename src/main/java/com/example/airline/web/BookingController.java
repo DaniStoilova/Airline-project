@@ -44,7 +44,7 @@ public class BookingController {
     }
 
     @GetMapping("/buy")
-    public String buy() {
+    public String buy(Model model) {
 
         return "booking";
     }
